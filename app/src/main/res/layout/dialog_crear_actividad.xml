@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:text="Crear Actividad"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/txtTituloDialog">
+    </TextView>
+    <EditText
+        android:id="@+id/edtNombreActividad"
+        android:layout_width="match_parent"
+        android:hint="Nombre:"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edtFechaActividad"
+        android:layout_width="match_parent"
+        android:hint="Expiración:"
+        android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edtDescripcionActividad"
+        android:layout_width="match_parent"
+        android:hint="Descripción:"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDialogCrear"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear"
+            android:textColor="@android:color/white"
+            android:background="#E91E63"/>
+        <Button
+            android:id="@+id/btnDialogCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Cancelar"
+            android:textColor="@android:color/white"
+            android:background="#E91E63"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

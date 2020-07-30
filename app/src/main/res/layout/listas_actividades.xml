@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+
+
+    >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+    
+        <ImageView
+            android:id="@+id/imagenpersona"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_menu_share">
+            
+        </ImageView>
+        
+        <TextView
+            android:id="@+id/nombre_actividad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la actividad"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/imagenpersona"
+            android:layout_toEndOf="@id/imagenpersona"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            >
+        </TextView>
+
+        <TextView
+            android:id="@+id/fecha_limite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha limite"
+            android:textSize="20sp"
+            android:layout_below="@id/nombre_actividad"
+            android:layout_toEndOf="@id/imagenpersona"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/imagenpersona">
+        </TextView>
+        <TextView
+            android:id="@+id/txtDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripcion"
+            android:textSize="20sp"
+            android:layout_below="@id/fecha_limite"
+            android:layout_toEndOf="@id/imagenpersona"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/imagenpersona">
+        </TextView>
+        
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

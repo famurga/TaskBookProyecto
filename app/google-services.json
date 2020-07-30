@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "525495099097",
+    "firebase_url": "https://taskbookproyecto.firebaseio.com",
+    "project_id": "taskbookproyecto",
+    "storage_bucket": "taskbookproyecto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525495099097:android:23980379f894bd7d1c68c8",
+        "android_client_info": {
+          "package_name": "com.example.taskbookproyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525495099097-v58eeh04u737b84dr569lvpqoa4veqhf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.taskbookproyecto",
+            "certificate_hash": "2ae2b7187898f6a4a97fd4c5de8b5b379b68dd63"
+          }
+        },
+        {
+          "client_id": "525495099097-c3bnh7ad5ka1gh0l9t0l7lh4d9906d1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpvAaVSwg4EcK6opqhQGUFckjMlWE4qKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525495099097-c3bnh7ad5ka1gh0l9t0l7lh4d9906d1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
