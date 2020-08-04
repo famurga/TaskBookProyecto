@@ -20,5 +20,9 @@
             android:id="@+id/actividades"
             android:icon="@drawable/ic_menu_share"
             android:title="Actividades" />
+        <item
+            android:id="@+id/miPerfil"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Mi Perfil" />
     </group>
 </menu>

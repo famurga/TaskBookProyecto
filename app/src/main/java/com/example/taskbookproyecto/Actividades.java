@@ -2,10 +2,7 @@ package com.example.taskbookproyecto;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +11,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.DrawableRes;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,9 +21,7 @@ import com.example.taskbookproyecto.Entidades.Actividad;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-
-import static com.example.taskbookproyecto.CargarEnBaseDatos.cargarDatosFirebase;
-
+import java.util.Calendar;
 
 public class Actividades extends Fragment {
 
@@ -74,6 +68,8 @@ public class Actividades extends Fragment {
                    @Override
                    public void onClick(View v) {
                        showDataPickerDialog();
+
+
                    }
                });
                 final EditText edtDescripcion = (EditText) mview.findViewById(R.id.edtDescripcionActividad);
@@ -90,7 +86,9 @@ public class Actividades extends Fragment {
                         fecha = edtFecha.getText().toString();
                         descripcion = edtDescripcion.getText().toString();
 
-                       cargarDatosFirebase(nombre,fecha,descripcion,15);
+                        CargarEnBaseDatos ac = new CargarEnBaseDatos();
+
+                       ac.cargarDatosFirebase(nombre,fecha,descripcion,15);
 
                     }
                 });
@@ -133,6 +131,13 @@ public class Actividades extends Fragment {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 final String selectedDate = dayOfMonth + " / " + (month+1) +" / " + year;
                 edtFecha.setText(selectedDate);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(calendar.YEAR,year);
+                calendar.set(calendar.MONTH,month);
+                calendar.set(calendar.DAY_OF_MONTH,dayOfMonth);
+                Utils.setAlarm(1, calendar.getTimeInMillis(), getActivity());
+
+                Toast.makeText(getActivity(), "Las horas son : "+(calendar.getTimeInMillis())/3600000, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -199,6 +204,7 @@ public class Actividades extends Fragment {
         AlertDialog dialog = builder.create();
         dialog.show();
         */
+
 
 
 

@@ -1,5 +1,6 @@
 package com.example.taskbookproyecto;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.taskbookproyecto.Entidades.Actividad;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,25 +33,25 @@ public class CargarEnBaseDatos extends AppCompatActivity{
     public static DatabaseReference mRootReference;
 
     TextView txtnom, txtape,txttel,txtdir;
-
-
+    public String personEmail="no entra";
+    String nombre2;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+         nombre2 = getIntent().getStringExtra("nombre");
+
+        }
 
 
-        mRootReference = FirebaseDatabase.getInstance().getReference();
+    public void cargarDatosFirebase(String nombre, String fecha, String descripcion, int imagen) {
 
 
-    }
 
 
-    public static void cargarDatosFirebase(String nombre, String fecha, String descripcion, int imagen) {
-
-
+        Log.e("Prueba1","El correo es:");
 
         Map<String, Object> datosUsuario = new HashMap<>();
         datosUsuario.put("nombre", nombre);
@@ -60,7 +65,7 @@ public class CargarEnBaseDatos extends AppCompatActivity{
 
         mRootReference = FirebaseDatabase.getInstance().getReference();
 
-        mRootReference.child("Usuarios").child(nombre).child("Actividades").push().setValue(datosUsuario);
+        mRootReference.child("Usuarios").child(personEmail).child("Actividades").push().setValue(datosUsuario);
     }
 
 

@@ -3,8 +3,10 @@ package com.example.taskbookproyecto;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -36,6 +38,9 @@ public class DataPickerFragment  extends DialogFragment  {
 
         datePickerDialog = new DatePickerDialog(getActivity(),listener,year, month,day);
 
+       // Utils.setAlarm(1, calendar.getTimeInMillis(), getActivity());
+       // Toast.makeText(getActivity(), "El dia es : "+day, Toast.LENGTH_LONG).show();
+      //  Log.e("Mensaje de prueba ","El dia es"+day);
 
         return datePickerDialog;
     }
