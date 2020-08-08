@@ -29,12 +29,25 @@
         android:clickable="true"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/edtDescripcionActividad"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
+
         android:hint="Descripción:"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/microAlertDialog"
+            android:layout_width="33dp"
+            android:layout_height="29dp"
+            android:layout_gravity="center"
+            android:src="@drawable/mic"></ImageView>
+</LinearLayout>
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -62,13 +75,7 @@
             android:textColor="@android:color/white"
             android:background="#E91E63"/>
 
-        <ImageView
-            android:id="@+id/microAlertDialog"
-            android:layout_width="38dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/mic">
 
-        </ImageView>
 
 
     </LinearLayout>
