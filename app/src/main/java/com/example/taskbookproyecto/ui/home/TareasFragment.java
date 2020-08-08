@@ -77,11 +77,14 @@ public class TareasFragment extends Fragment {
 
 
             Log.e("Correo de usuario en oc", "Este es su correo en oc:" + personName);
-
+            getDatosFromFirebase();
+        }
+        else{
+            Toast.makeText(getContext(), "No hay cuenta Asociada", Toast.LENGTH_SHORT).show();
         }
 
        // verificarExiste("Rociooo");
-        getDatosFromFirebase();
+
 
 
 
