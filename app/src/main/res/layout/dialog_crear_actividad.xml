@@ -35,7 +35,7 @@
         android:layout_height="wrap_content">
     <EditText
         android:id="@+id/edtDescripcionActividad"
-        android:layout_width="350dp"
+        android:layout_width="250dp"
 
         android:hint="Descripción:"
         android:layout_marginTop="10dp"

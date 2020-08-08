@@ -188,7 +188,7 @@ public class TareasFragment extends Fragment {
                         String Descripcion = actividad.getDescripcion();
                         int imagenId = actividad.getImagenId();
 
-                        Toast.makeText(getContext(), "Llega la descripcion"+Descripcion, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getContext(), "Llega la descripcion"+Descripcion, Toast.LENGTH_SHORT).show();
 
                         listaActividad.add(new Actividad(nombre,fecha,Descripcion,R.drawable.ic_menu_camera));
 
