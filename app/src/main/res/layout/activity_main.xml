@@ -81,11 +81,7 @@
                 >
             </com.google.android.gms.common.SignInButton>
 
-
         </LinearLayout>
-
-
-
 
     </ScrollView>
 
