@@ -4,14 +4,14 @@ public class Actividad {
     private String nombre;
     private String fecha;
     private int imagenId;
-    private String descripcion;
+    private String Descripcion;
     public Actividad(){
 
     }
     public Actividad(String nombre, String fecha,String descripcion, int imagenId) {
         this.nombre = nombre;
         this.fecha = fecha;
-        this.descripcion = descripcion;
+        this.Descripcion = descripcion;
         this.imagenId = imagenId;
     }
 
@@ -40,6 +40,6 @@ public class Actividad {
         this.imagenId = imagenId;
     }
 
-    public  String getDescripcion(){ return descripcion;}
-    public  void setDescripcion(String descripcion){this.descripcion = descripcion;}
+    public  String getDescripcion(){ return Descripcion;}
+    public  void setDescripcion(String descripcion){this.Descripcion = descripcion;}
 }

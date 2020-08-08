@@ -4,92 +4,89 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
-
     <ImageView
         android:layout_width="242dp"
         android:layout_height="197dp"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
         android:src="@drawable/tb">
-
     </ImageView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/edit1"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Ingrese su Email"
+                android:textColorHint="#FFFFFF">
+            </EditText>
+            <EditText
+                android:id="@+id/edit2"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textColorHint="#FFFFFF"
+                android:hint="Ingrese su contraseña"
+                android:inputType="textPassword"
+                >
+            </EditText>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ovalo"
+                android:textColor="@color/aqua"
+                android:text="@string/iniciar"
+                app:layout_constraintBottom_toTopOf="@+id/button1"
+                android:layout_marginTop="10dp"
+                >
+            </Button>
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ovalo"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/aqua"
+                android:text="@string/registrar"
+                ></Button>
 
-    <EditText
-        android:id="@+id/edit1"
-        android:layout_width="300dp"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Ingrese su Email"
-        android:textColorHint="#FFFFFF"
-        android:layout_marginTop="10dp"
-       >
-
-    </EditText>
-
-    <EditText
-        android:id="@+id/edit2"
-        android:layout_width="300dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColorHint="#FFFFFF"
-        android:hint="Ingrese su contraseña"
-        android:inputType="textPassword"
-     >
-
-    </EditText>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="300dp"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ovalo"
-            android:textColor="@color/aqua"
-        android:text="@string/iniciar"
-        app:layout_constraintBottom_toTopOf="@+id/button1"
-        android:layout_marginTop="30dp"
-    >
-
-    </Button>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="300dp"
-        android:layout_gravity="center"
-        android:background="@drawable/ovalo"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/aqua"
-        android:text="@string/registrar"
-        ></Button>
+            <Button
+                android:id="@+id/btnInvitado"
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_marginTop="10dp"
+                android:textColor="#FFFEFF"
+                android:text="@string/invitado"
+                />
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnGoogle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                >
+            </com.google.android.gms.common.SignInButton>
 
 
-    <Button
-        android:id="@+id/btnInvitado"
-        android:layout_width="300dp"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFEFF"
-        android:text="@string/invitado"
-       />
+        </LinearLayout>
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btnGoogle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_gravity="center"
-        >
 
-    </com.google.android.gms.common.SignInButton>
+
+    </ScrollView>
 
 </LinearLayout>

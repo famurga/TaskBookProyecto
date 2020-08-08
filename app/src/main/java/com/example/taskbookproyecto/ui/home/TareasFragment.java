@@ -28,6 +28,8 @@ import com.example.taskbookproyecto.DataPickerFragment;
 import com.example.taskbookproyecto.Entidades.Actividad;
 import com.example.taskbookproyecto.MainActivity;
 import com.example.taskbookproyecto.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,7 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class TareasFragment extends Fragment {
 
     AdapterActividad adapterActividad;
     RecyclerView recyclerViewActividades;
@@ -50,6 +52,7 @@ public class HomeFragment extends Fragment {
     int imagen;
     FloatingActionButton floatingActionButton;
     DatabaseReference mDataBase;
+    String personName;
 
 
 
@@ -65,7 +68,20 @@ public class HomeFragment extends Fragment {
 
 
         listaActividad = new ArrayList<>();
-        verificarExiste("karina");
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        if (acct != null) {
+
+
+            personName = acct.getDisplayName();
+
+
+            Log.e("Correo de usuario en oc", "Este es su correo en oc:" + personName);
+
+        }
+
+       // verificarExiste("Rociooo");
+        getDatosFromFirebase();
 
 
 
@@ -145,17 +161,37 @@ public class HomeFragment extends Fragment {
 
     public  void getDatosFromFirebase(){
 
-        mDataBase.child("Usuarios").addValueEventListener(new ValueEventListener() {
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        if (acct != null) {
+
+
+            personName = acct.getDisplayName();
+
+
+            Log.e("Correo de usuario en HF", "Este es su correo en HF:" + personName);
+
+        }
+
+        mDataBase.child("Usuarios").child(personName).child("Actividades").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
 
-                    for(DataSnapshot ds: dataSnapshot.getChildren()){
-                       String descripcion = ds.child("Descripcion").getValue().toString();
 
-                        String nombre = ds.child("nombre").getValue().toString();
-                        String fecha = ds.child("fecha").getValue().toString();
-                        listaActividad.add(new Actividad(nombre,fecha,descripcion,2));
+
+                    for( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+
+                        Actividad actividad = dataSnapshot1.getValue(Actividad.class);
+                        String nombre = actividad.getNombre();
+                        String fecha = actividad.getFecha();
+                        String Descripcion = actividad.getDescripcion();
+                        int imagenId = actividad.getImagenId();
+
+                        Toast.makeText(getContext(), "Llega la descripcion"+Descripcion, Toast.LENGTH_SHORT).show();
+
+                        listaActividad.add(new Actividad(nombre,fecha,Descripcion,R.drawable.ic_menu_camera));
+
                     }
 
                     adapterActividad= new AdapterActividad(getContext(),listaActividad);
@@ -176,8 +212,19 @@ public class HomeFragment extends Fragment {
 
     public void verificarExiste(String dato){
 
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        if (acct != null) {
+
+
+            personName = acct.getDisplayName();
+
+
+            Log.e("Correo de usuario en HF", "Este es su correo en HF:" + personName);
+
+        }
+
         Query consulta = FirebaseDatabase.getInstance().getReference()
-                .child("Usuarios").child("karina").child("Actividades").orderByChild("nombre").equalTo(dato);
+                .child("Usuarios").child(personName).child("Actividades").orderByChild("nombre").equalTo(dato);
         consulta.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

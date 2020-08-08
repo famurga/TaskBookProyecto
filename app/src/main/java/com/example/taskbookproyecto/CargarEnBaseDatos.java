@@ -46,7 +46,9 @@ public class CargarEnBaseDatos extends AppCompatActivity{
         }
 
 
-    public void cargarDatosFirebase(String nombre, String fecha, String descripcion, int imagen) {
+
+
+    public void cargarDatosFirebase(String CorreoUsuario,String nombre, String fecha, String descripcion, int imagen) {
 
 
 
@@ -65,7 +67,7 @@ public class CargarEnBaseDatos extends AppCompatActivity{
 
         mRootReference = FirebaseDatabase.getInstance().getReference();
 
-        mRootReference.child("Usuarios").child(personEmail).child("Actividades").push().setValue(datosUsuario);
+        mRootReference.child("Usuarios").child(CorreoUsuario).child("Actividades").push().setValue(datosUsuario);
     }
 
 
