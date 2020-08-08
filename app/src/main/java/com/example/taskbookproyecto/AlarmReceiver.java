@@ -17,5 +17,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         ContextCompat.startForegroundService(context, service1 );
         Log.d("WALKIRIA", " ALARM RECEIVED!!!");
 
+
     }
 }
