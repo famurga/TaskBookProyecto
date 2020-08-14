@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient2_background"
+    tools:context=".ui.TareaDetalleFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+  <TextView
+      android:id="@+id/TituloDetalleTarea"
+      android:layout_width="match_parent"
+      android:layout_marginTop="20dp"
+      android:textSize="30sp"
+      android:textStyle="bold"
+      android:text="Detalle Tarea"
+      android:gravity="center"
+      android:layout_height="wrap_content">
+
+  </TextView>
+    <ImageView
+        android:id="@+id/ImgDetalleTarea"
+        android:layout_width="200dp"
+
+        android:layout_height="200dp"
+        android:layout_gravity="center">
+
+    </ImageView>
+
+        <Button
+            android:id="@+id/btnSeleccionarImagen"
+            android:layout_width="wrap_content"
+            android:text="Seleccionar Imagen"
+            android:textStyle="bold"
+            android:textColor="#FAFAFB"
+            android:background="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+
+        </Button>
+
+
+        <TextView
+            android:id="@+id/txtnombreTarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Nombre de la tarea:">
+
+        </TextView>
+        <TextView
+            android:id="@+id/txtTareadetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:text="Nombre de la tarea">
+
+        </TextView>
+        <TextView
+            android:id="@+id/txtfechatarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="Fecha de Expiración:">
+
+        </TextView>
+        <TextView
+            android:id="@+id/txtfechaDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="Fecha">
+
+        </TextView>
+        <TextView
+            android:id="@+id/txtDescripciontarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="Descripción de la Tarea:">
+
+        </TextView>
+        <TextView
+            android:id="@+id/txtDescripcionDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="Descripción">
+
+        </TextView>
+        <Button
+            android:id="@+id/seleccionar"
+            android:layout_width="match_parent"
+            android:text="Seleccionar"
+            android:background="@color/colorAccent"
+            android:textColor="#ffff"
+            android:layout_height="wrap_content">
+
+        </Button>
+        <Button
+            android:id="@+id/cargar"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:text="cargar"
+            android:background="@color/colorAccent"
+            android:textColor="#ffff"
+            android:layout_height="wrap_content">
+
+        </Button>
+    </LinearLayout>
+
+</FrameLayout>

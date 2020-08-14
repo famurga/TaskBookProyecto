@@ -1,4 +1,4 @@
-package com.example.taskbookproyecto;
+package com.example.taskbookproyecto.ui;
 
 import android.os.Bundle;
 
@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.taskbookproyecto.Actividades;
+import com.example.taskbookproyecto.MiPerfilFragment;
+import com.example.taskbookproyecto.R;
 import com.example.taskbookproyecto.ui.home.TareasFragment;
 
 public class PantallaPrincipalFragment extends Fragment implements View.OnClickListener {

@@ -98,7 +98,9 @@ public class Actividades extends Fragment {
                         }
                         catch(ActivityNotFoundException e)
                         {
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW,   Uri.parse("https://market.android.com/details?id=com.google.android.googlequicksearchbox"));
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                          Uri.parse("https://market.android.com/details?id=com.google.android" +
+                                  ".googlequicksearchbox"));
                             startActivity(browserIntent);
 
                         }
@@ -217,10 +219,25 @@ public class Actividades extends Fragment {
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             String spokenText = results.get(0);
+                if( spokenText.equals("Captura")){
+
+                    //Se realizara el lanzamiento para que se capture la imagen
+                }
+
+
+
+
+
+
+
+
+
 
             descripcion =spokenText;
           //  edtDescripcion = (EditText) getActivity().findViewById(R.id.edtDescripcionActividad);
             edtDescripcion.setText(descripcion);
+
+
 
             /*
             if(spokenText=="siguiente página"){

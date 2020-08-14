@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/PantallaPrincipal"
-        android:name="com.example.taskbookproyecto.PantallaPrincipalFragment"
+        android:name="com.example.taskbookproyecto.ui.PantallaPrincipalFragment"
         android:label="Pantalla Principal"
         tools:layout="@layout/fragment_pantalla_principal" />
 </navigation>

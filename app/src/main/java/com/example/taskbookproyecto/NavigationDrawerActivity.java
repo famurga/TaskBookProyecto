@@ -9,10 +9,14 @@ import android.view.Menu;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.taskbookproyecto.Entidades.Actividad;
+import com.example.taskbookproyecto.ui.TareaDetalleFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,11 +25,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class NavigationDrawerActivity extends AppCompatActivity {
+public class NavigationDrawerActivity extends AppCompatActivity implements iComunicaFragments{
 
     public static final String user = "names";
     TextView txtUser;
     private AppBarConfiguration mAppBarConfiguration;
+    //variable del fragmentdetalle tarea
+    TareaDetalleFragment tareaDetalleFragment;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
 
 
 
@@ -112,5 +120,25 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void enviarTarea(Actividad actividad) {
+        //logica para realizar el envio
+
+        tareaDetalleFragment = new TareaDetalleFragment();
+        Bundle bundle = new Bundle();
+        //enviar el objeto que esta llegando con serializable
+        bundle.putSerializable("objeto",actividad);
+        tareaDetalleFragment.setArguments(bundle);
+        //Abrir fragment
+        fragmentManager =  getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameTareas,tareaDetalleFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+
+
     }
 }

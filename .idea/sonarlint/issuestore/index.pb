@@ -17,8 +17,6 @@ H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
 D
 google-services.json,f\7\f761570c4ae90a5577cea77748c77672342c8041
-^
-.app/src/main/res/layout/fragment_mi_perfil.xml,4\a\4a36568db00289d28e8961574be19ae62180e820
 q
 Aapp/src/main/java/com/example/taskbookproyecto/AlarmReceiver.java,2\5\25a9ad6379b751f20c1c6dc52bc443e5eba02dde
 t
@@ -40,5 +38,9 @@ y
 Iapp/src/main/java/com/example/taskbookproyecto/ui/home/HomeViewModel.java,0\7\0795a3e6fa0ca3798f38257a9f222e7db9afd87e
 ~
 Napp/src/main/java/com/example/taskbookproyecto/ui/gallery/GalleryFragment.java,a\5\a5bc15a77b13d0c27e6da515a8d85f11daf36584
-}
-Mapp/src/main/java/com/example/taskbookproyecto/PantallaPrincipalFragment.java,7\0\70b8f7ba2d29138a9311062919b5fdc89b1a0454
+v
+Fapp/src/main/java/com/example/taskbookproyecto/iComunicaFragments.java,6\d\6d2fccf715a66e7d3d33dc45a107cdba1b411254
+€
+Papp/src/main/java/com/example/taskbookproyecto/ui/PantallaPrincipalFragment.java,2\6\2682d70c4d4d322dda3f84cf6568a697eea02880
+{
+Kapp/src/main/java/com/example/taskbookproyecto/ui/TareaDetalleFragment.java,b\a\bae86d2e280d6849d0c67c146fe221282d528bbd

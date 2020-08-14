@@ -1,7 +1,9 @@
 package com.example.taskbookproyecto.ui.home;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +30,7 @@ import com.example.taskbookproyecto.DataPickerFragment;
 import com.example.taskbookproyecto.Entidades.Actividad;
 import com.example.taskbookproyecto.MainActivity;
 import com.example.taskbookproyecto.R;
+import com.example.taskbookproyecto.iComunicaFragments;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -53,6 +56,9 @@ public class TareasFragment extends Fragment {
     FloatingActionButton floatingActionButton;
     DatabaseReference mDataBase;
     String personName;
+
+    Activity activity;
+    iComunicaFragments interfazComunicaFragments;
 
 
 
@@ -88,7 +94,7 @@ public class TareasFragment extends Fragment {
 
 
 
-
+/*
         floatingActionButton = (FloatingActionButton)view.findViewById(R.id.añadir);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +146,7 @@ public class TareasFragment extends Fragment {
 
             }
         });
-
+*/
 
 
         return view;
@@ -199,6 +205,16 @@ public class TareasFragment extends Fragment {
 
                     adapterActividad= new AdapterActividad(getContext(),listaActividad);
                     recyclerViewActividades.setAdapter(adapterActividad);
+
+                    adapterActividad.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String nombre = listaActividad.get(recyclerViewActividades.getChildAdapterPosition(v)).getNombre();
+                            Toast.makeText(getContext(), "Seleccionó: "+ nombre, Toast.LENGTH_SHORT).show();
+                            interfazComunicaFragments.enviarTarea(listaActividad.get(recyclerViewActividades.getChildAdapterPosition(v)));
+                        }
+                    });
+
                 }
             }
 
@@ -265,5 +281,17 @@ public class TareasFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof Activity){
+            this.activity = (Activity) context;
+            interfazComunicaFragments = (iComunicaFragments) this.activity;
+        }
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
 }
