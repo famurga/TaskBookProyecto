@@ -13,7 +13,7 @@
         android:layout_width="181dp"
         android:layout_height="139dp"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/logounsa">
 
     </ImageView>
