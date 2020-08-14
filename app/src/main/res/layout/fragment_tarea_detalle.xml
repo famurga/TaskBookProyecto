@@ -7,6 +7,12 @@
     android:background="@drawable/gradient2_background"
     tools:context=".ui.TareaDetalleFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -123,5 +129,6 @@
 
         </Button>
     </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
