@@ -234,7 +234,7 @@
             android:clickable="true"
             android:layout_width="240dp"
             app:cardElevation="6dp"
-            android:id="@+id/AddCardId"
+            android:id="@+id/EjemplosCardId"
             app:cardCornerRadius="12dp"
             android:layout_height="150dp"
             android:layout_margin="10dp">
@@ -255,7 +255,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Add"/>
+                    android:text="Ejemplos"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -265,7 +265,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Más opciones"
+                    android:text="Algunos ejemplos"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 

@@ -15,14 +15,17 @@ import android.widget.ImageView;
 import com.example.taskbookproyecto.Actividades;
 import com.example.taskbookproyecto.MiPerfilFragment;
 import com.example.taskbookproyecto.R;
+import com.example.taskbookproyecto.ui.gallery.GalleryFragment;
 import com.example.taskbookproyecto.ui.home.TareasFragment;
+import com.example.taskbookproyecto.ui.slideshow.SlideshowFragment;
 
 public class PantallaPrincipalFragment extends Fragment implements View.OnClickListener {
     FragmentTransaction  transaction;
-    Fragment FragmentActividades, FragmentTareas,FragmentMiperfil;
+    Fragment FragmentActividades, FragmentTareas,FragmentMiperfil,
+            FragmentEjemplos, FragmentAcercadeNosotros;
 
     CardView cardViewActividades,cardviewTareas,cardviewMiperfil,cardviewinformacion,
-            cardviewadd;
+            cardviewEjemplo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,17 +47,19 @@ public class PantallaPrincipalFragment extends Fragment implements View.OnClickL
         cardviewTareas = v.findViewById(R.id.TaskCardId);
         cardviewMiperfil = v.findViewById(R.id.PerfilCardId);
         cardviewinformacion = v.findViewById(R.id.AcercaCardId);
-        cardviewadd = v.findViewById(R.id.AddCardId);
+        cardviewEjemplo = v.findViewById(R.id.EjemplosCardId);
 
         cardViewActividades.setOnClickListener((View.OnClickListener) this);
         cardviewTareas.setOnClickListener((View.OnClickListener) this);
         cardviewMiperfil.setOnClickListener((View.OnClickListener) this);
         cardviewinformacion.setOnClickListener((View.OnClickListener) this);
-        cardviewadd.setOnClickListener((View.OnClickListener) this);
+        cardviewEjemplo.setOnClickListener((View.OnClickListener) this);
 
         FragmentActividades = new Actividades();
         FragmentTareas = new TareasFragment();
         FragmentMiperfil = new MiPerfilFragment();
+        FragmentAcercadeNosotros = new GalleryFragment();
+        FragmentEjemplos = new SlideshowFragment();
 
         return v;
 
@@ -76,6 +81,14 @@ public class PantallaPrincipalFragment extends Fragment implements View.OnClickL
                 break;
             case R.id.PerfilCardId:
                 transaction.replace(R.id.nav_host_fragment,FragmentMiperfil);
+                transaction.addToBackStack(null);
+                break;
+            case R.id.AcercaCardId:
+                transaction.replace(R.id.nav_host_fragment,FragmentAcercadeNosotros);
+                transaction.addToBackStack(null);
+                break;
+            case R.id.EjemplosCardId:
+                transaction.replace(R.id.nav_host_fragment,FragmentEjemplos);
                 transaction.addToBackStack(null);
                 break;
 

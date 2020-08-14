@@ -57,6 +57,10 @@ public class MiPerfilFragment extends Fragment {
                     // ...
                     case R.id.btnCerrarSesion:
                         signOut();
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                         break;
                     // ...
                 }

@@ -109,25 +109,7 @@
             android:text="Descripción">
 
         </TextView>
-        <Button
-            android:id="@+id/seleccionar"
-            android:layout_width="match_parent"
-            android:text="Seleccionar"
-            android:background="@color/colorAccent"
-            android:textColor="#ffff"
-            android:layout_height="wrap_content">
 
-        </Button>
-        <Button
-            android:id="@+id/cargar"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:text="cargar"
-            android:background="@color/colorAccent"
-            android:textColor="#ffff"
-            android:layout_height="wrap_content">
-
-        </Button>
     </LinearLayout>
     </ScrollView>
 

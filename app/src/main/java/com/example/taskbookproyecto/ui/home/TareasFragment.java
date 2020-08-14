@@ -203,6 +203,9 @@ public class TareasFragment extends Fragment {
 
                     }
 
+
+
+                    if(getActivity()!=null){
                     adapterActividad= new AdapterActividad(getContext(),listaActividad);
                     recyclerViewActividades.setAdapter(adapterActividad);
 
@@ -214,6 +217,9 @@ public class TareasFragment extends Fragment {
                             interfazComunicaFragments.enviarTarea(listaActividad.get(recyclerViewActividades.getChildAdapterPosition(v)));
                         }
                     });
+
+                    }
+
 
                 }
             }

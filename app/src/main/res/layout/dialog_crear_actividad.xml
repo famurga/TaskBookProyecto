@@ -45,9 +45,9 @@
             android:id="@+id/microAlertDialog"
             android:layout_width="32dp"
             android:layout_height="36dp"
-
-            android:layout_gravity="center"
-            android:src="@drawable/mic"></ImageView>
+            android:clickable="true"
+            android:src="@drawable/mic">
+        </ImageView>
 </LinearLayout>
     <LinearLayout
         android:id="@+id/linearLayout2"

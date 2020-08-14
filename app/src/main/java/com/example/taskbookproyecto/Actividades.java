@@ -30,6 +30,11 @@ import com.example.taskbookproyecto.Entidades.Actividad;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,9 +44,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class Actividades extends Fragment {
 
-
-    AdapterActividad adapterActividad;
-    RecyclerView recyclerViewActividades;
     ArrayList<Actividad> listaActividad;
      EditText edtFecha, edtNombre;
      DialogFragment dialogFragment;
@@ -50,11 +52,13 @@ public class Actividades extends Fragment {
         int imagen;
     FloatingActionButton floatingActionButton;
     public String personName;
-    ImageView micImageView;
+    ImageView fotoTarea, micImageView;
     private static final int SPEECH_REQUEST_CODE = 0;
      EditText edtDescripcion;
 
-
+    AdapterActividad adapterActividad;
+    RecyclerView recyclerViewActividades;
+    DatabaseReference mDataBase;
 
 
 
@@ -67,11 +71,29 @@ public class Actividades extends Fragment {
                              Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.fragment_actividades, container, false);
+
+
         recyclerViewActividades = view.findViewById(R.id.recyclerView);
+        recyclerViewActividades.setLayoutManager(new LinearLayoutManager(getContext()));
+        mDataBase = FirebaseDatabase.getInstance().getReference();
 
 
+        listaActividad = new ArrayList<>();
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        if (acct != null) {
+
+            personName = acct.getDisplayName();
 
 
+            Log.e("Correo de usuario en oc", "Este es su correo en oc:" + personName);
+            getDatosFromFirebase();
+        }
+        else{
+            Toast.makeText(getContext(), "No hay cuenta Asociada", Toast.LENGTH_SHORT).show();
+        }
+
+    //Boton Flotante
         floatingActionButton = (FloatingActionButton)view.findViewById(R.id.añadir);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -181,33 +203,73 @@ public class Actividades extends Fragment {
             }
         });
 
-
-
-
-
-
-
-        listaActividad = new ArrayList<>();
-        //cargar la lista
-        cargarLista();
-
-        //mostrar datos
-
-        mostrarData();
-        // Inflate the layout for this fragment
         return view;
     }
 
+    public  void getDatosFromFirebase(){
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getContext());
+        if (acct != null) {
 
 
-    // Cree una intención que pueda iniciar la actividad de Reconocimiento de voz
-    private void displaySpeechRecognizer() {
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        // Comience la actividad, la intención se completará con el texto del discurso
-       startActivityForResult(intent, SPEECH_REQUEST_CODE);
+            personName = acct.getDisplayName();
+
+
+            Log.e("Correo de usuario en HF", "Este es su correo en HF:" + personName);
+
+        }
+
+        mDataBase.child("Usuarios").child(personName).child("Actividades").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+
+
+
+                    for( DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+
+                        Actividad actividad = dataSnapshot1.getValue(Actividad.class);
+                        String nombre = actividad.getNombre();
+                      //  String fecha = actividad.getFecha();
+                       // String Descripcion = actividad.getDescripcion();
+                        //int imagenId = actividad.getImagenId();
+
+                        // Toast.makeText(getContext(), "Llega la descripcion"+Descripcion, Toast.LENGTH_SHORT).show();
+
+                        listaActividad.add(new Actividad(nombre,null,null,R.drawable.ic_menu_camera));
+
+                    }
+
+                    adapterActividad= new AdapterActividad(getContext(),listaActividad);
+                    recyclerViewActividades.setAdapter(adapterActividad);
+
+                    adapterActividad.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String nombre = listaActividad.get(recyclerViewActividades.getChildAdapterPosition(v)).getNombre();
+                            Toast.makeText(getContext(), "Seleccionó: "+ nombre +" Para mas detalles dirijase a Tareas", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
     }
+
+
+
+
 
 
     // Esta devolución de llamada se invoca cuando regresa el Reconocimiento de voz.
@@ -219,42 +281,12 @@ public class Actividades extends Fragment {
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             String spokenText = results.get(0);
-                if( spokenText.equals("Captura")){
-
-                    //Se realizara el lanzamiento para que se capture la imagen
-                }
-
-
-
-
-
-
-
-
-
 
             descripcion =spokenText;
           //  edtDescripcion = (EditText) getActivity().findViewById(R.id.edtDescripcionActividad);
             edtDescripcion.setText(descripcion);
 
 
-
-            /*
-            if(spokenText=="siguiente página"){
-                Intent intent1 = new Intent(this,ActivitySiguiente.class);
-                startActivity(intent1);
-            }
-            if(spokenText.equals("siguiente página")){
-                Intent intent1 = new Intent(this,ActivitySiguiente.class);
-                startActivity(intent1);
-            }
-
-            if(spokenText.equals("hola")){
-                Intent intent1 = new Intent(this,ActivitySiguiente.class);
-                startActivity(intent1);
-            }
-            */
-            // Haz algo con voiceText
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -285,66 +317,6 @@ public class Actividades extends Fragment {
 
 
     }
-
-
-    public void cargarLista(){
-        listaActividad.add(new Actividad("Rutina de Ejercicio","20/07/2020","Esta es la descripcion",R.drawable.ic_menu_share));
-        listaActividad.add(new Actividad("Tarea de PS","05/07/2020","Esta es la descripcion",R.drawable.ic_menu_share));
-        listaActividad.add(new Actividad("Tarea de IR","04/07/2020","Esta es la descripcion",R.drawable.ic_menu_share));
-        listaActividad.add(new Actividad("Mas tarea de PS","03/07/2020","Esta es la descripcion",R.drawable.ic_menu_share));
-        listaActividad.add(new Actividad("Tarea de Plataformas","09/07/2020","Esta es la descripcion",R.drawable.ic_menu_share));
-        listaActividad.add(new Actividad("Salir a correr","06/07/2020","Esta es una descripcion",R.drawable.ic_menu_camera));
-    }
-    public void mostrarData(){
-        recyclerViewActividades.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterActividad = new AdapterActividad(getContext(), listaActividad);
-        recyclerViewActividades.setAdapter(adapterActividad);
-
-        adapterActividad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nombre = listaActividad.get(recyclerViewActividades.getChildAdapterPosition(v)).getNombre();
-                Toast.makeText(getContext(), "Seleccionó: "+ nombre, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-
-
-
-
-
-        /*
-
-        AlertDialog inciial
-        final AlertDialog.Builder builder =  new AlertDialog.Builder(getActivity());
-        final EditText  input = new EditText(getActivity());
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder.setView(input);
-        builder.setMessage(" Nombre de la actividad nueva").
-                setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
-
-                    Intent intent = new Intent(getActivity(),MainActivity.class);
-
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-
-
-                })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        */
-
-
 
 
 }

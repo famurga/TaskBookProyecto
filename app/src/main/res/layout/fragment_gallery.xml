@@ -1,22 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#D86C3A"
     tools:context=".ui.gallery.GalleryFragment">
 
+    <ImageView
+        android:id="@+id/ImgUnsa"
+        android:layout_width="181dp"
+        android:layout_height="139dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/logounsa">
+
+    </ImageView>
+
     <TextView
-        android:id="@+id/text_gallery"
+        android:id="@+id/txtHistoria"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textColor="#ffff"
+        android:textStyle="bold"
+
+        android:text="Somos Estudiantes de la carrera de Ingenieria de Sistemas de
+la Universidad Nacional de San Agustin de Arequipa, el presente aplicativo fue creado como proyecto final
+del curso de Pruebas de Software">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:text="Frank Alex Murga Diaz">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:textStyle="italic"
+        android:text="Contacto: fmurga@unsa.edu.pe">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:text="Juan Carlos Valdivia berrios">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:textStyle="italic"
+        android:text="Contacto: jvaldiviab@unsa.edu.pe">
+    </TextView>
+
+
+</LinearLayout>
