@@ -25,6 +25,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.Serializable;
+
 public class NavigationDrawerActivity extends AppCompatActivity implements iComunicaFragments{
 
     public static final String user = "names";

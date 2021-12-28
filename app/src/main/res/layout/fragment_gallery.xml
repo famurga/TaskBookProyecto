@@ -28,9 +28,7 @@
         android:textColor="#ffff"
         android:textStyle="bold"
 
-        android:text="Somos Estudiantes de la carrera de Ingenieria de Sistemas de
-la Universidad Nacional de San Agustin de Arequipa, el presente aplicativo fue creado como proyecto final
-del curso de Pruebas de Software">
+        android:text="Soy estudiante de Ingenieria de Sistemas UNSA, el presente aplicativo pertenece al curso de Arquitectura de Computadoras">
     </TextView>
 
     <TextView
@@ -39,31 +37,17 @@ del curso de Pruebas de Software">
         android:layout_marginLeft="70dp"
         android:layout_marginTop="40dp"
         android:textStyle="bold"
-        android:text="Frank Alex Murga Diaz">
+        android:text="Anderson Rivera Quispe">
     </TextView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:textStyle="italic"
-        android:text="Contacto: fmurga@unsa.edu.pe">
+        android:text="Contacto: ariveraqu@unsa.edu.pe">
     </TextView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:text="Juan Carlos Valdivia berrios">
-    </TextView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
-        android:textStyle="italic"
-        android:text="Contacto: jvaldiviab@unsa.edu.pe">
-    </TextView>
+
 
 
 </LinearLayout>
